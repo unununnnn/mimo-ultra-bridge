@@ -78,7 +78,7 @@ export class StreamSieve {
   private inToolBlock = false;
 
   public push(chunk: string): SieveChunk {
-    this.buffer += chunk;
+    this.buffer += chunk.replace(/\u0000/g, "");
     const out: SieveChunk = {};
 
     // Process <think> and </think> transitions
